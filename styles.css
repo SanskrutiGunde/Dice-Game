@@ -43,12 +43,17 @@ img {
   font-size: 2rem;
   transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
   border-radius: 15px;
+  cursor: pointer;
 }
 .playButton:hover {
   background-color: #bc6262;
   -webkit-box-shadow: 10px 8px 12px 0px rgba(149, 53, 61, 0.4);
   -moz-box-shadow: 10px 8px 12px 0px rgba(149, 53, 61, 0.4);
   box-shadow: 10px 8px 12px 0px rgba(149, 53, 61, 0.4);
+}
+
+.playButton:focus {
+  outline: none;
 }
 
 footer {
