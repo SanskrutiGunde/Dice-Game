@@ -27,5 +27,17 @@ function play() {
   }
 }
 document.querySelector("button.playButton").onclick = function () {
+  playSound();
   play();
 };
+
+// button sound
+var soundID = "diceSound";
+function loadSound() {
+  createjs.Sound.registerSound("sound/DICE.wav", soundID);
+}
+function playSound() {
+  createjs.Sound.play(soundID);
+}
+
+window.onload = loadSound;
