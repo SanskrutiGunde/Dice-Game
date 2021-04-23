@@ -31,44 +31,7 @@ document.querySelector("button.playButton").onclick = function () {
   play();
 };
 
-// button sound
-var soundID = "diceSound";
-function loadSound() {
-  if (
-    createjs.WebAudioPlugin.context &&
-    createjs.WebAudioPlugin.context.state === "suspended"
-  ) {
-    createjs.WebAudioPlugin.context.resume();
-  }
-  // if initializeDefaultPlugins returns false, we cannot play sound in this browser
-  if (!createjs.Sound.initializeDefaultPlugins()) {
-    return;
-  }
-  createjs.Sound.registerSound("sound/DICE.wav", soundID);
-}
 function playSound() {
-  createjs.Sound.play(soundID);
+  var audio = new Audio("sound/DICE.wav");
+  audio.play();
 }
-
-var resumeAudioContext = function () {
-  // handler for fixing suspended audio context in Chrome
-  try {
-    if (
-      createjs.WebAudioPlugin.context &&
-      createjs.WebAudioPlugin.context.state === "suspended"
-    ) {
-      createjs.WebAudioPlugin.context.resume();
-    }
-  } catch (e) {
-    // SoundJS context or web audio plugin may not exist
-    console.error(
-      "There was an error while trying to resume the SoundJS Web Audio context..."
-    );
-    console.error(e);
-  }
-  // Should only need to fire once
-  window.removeEventListener("click", resumeAudioContext);
-};
-window.addEventListener("click", resumeAudioContext);
-
-// window.onload = loadSound;
