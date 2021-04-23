@@ -34,6 +34,10 @@ document.querySelector("button.playButton").onclick = function () {
 // button sound
 var soundID = "diceSound";
 function loadSound() {
+  // if initializeDefaultPlugins returns false, we cannot play sound in this browser
+  if (!createjs.Sound.initializeDefaultPlugins()) {
+    return;
+  }
   createjs.Sound.registerSound("sound/DICE.wav", soundID);
 }
 function playSound() {
